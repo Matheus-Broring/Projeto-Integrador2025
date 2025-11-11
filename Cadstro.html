@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro - HistoryCar</title>
+
+  <!-- CSS externo -->
+  <link rel="stylesheet" href=/css/style.css />
+</head>
+
+<body class="Bcadastro">
+  <main class="login-container">
+
+    <!-- Botão de modo escuro -->
+    <div class="dark-mode-toggle">
+      <label class="switch">
+        <input type="checkbox" id="darkToggle" /> 
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <section class="login-box">
+      <div class="logo-container">
+        <a href="Home.html">
+          <img src="/Style/img/image-Photoroom - Copia.png" alt="Logo HistoryCar" id="logoMain" />
+        </a>
+      </div>
+
+      <h1>Cadastre-se no HistoryCar</h1>
+
+      <form id="formCadastro">
+        <label for="nome">Nome completo:</label>
+        <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Digite seu email" required />
+
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" placeholder="Crie uma senha" required />
+
+        <label for="confirmar-senha">Confirmar senha:</label>
+        <input type="password" id="confirmar-senha" name="confirmar-senha" placeholder="Confirme sua senha" required />
+
+        <button type="submit">Cadastrar</button>
+      </form>
+
+      <p class="signup-link">
+        Já tem conta? <a href="login.html">Entrar</a>
+      </p>
+    </section>
+  </main>
+
+  <!-- Script Dark Mode + Validação -->
+  <script>
+    const toggle = document.getElementById('darkToggle');
+    const logoMain = document.getElementById('logoMain');
+
+    const logos = {
+      default: '/Style/img/image-Photoroom - Copia.png',
+      dark: '/Style/img/image-Photoroom - Copia.png', // mesmo logo no seu código
+    };
+
+    // Carrega tema salvo
+    const temaSalvo = localStorage.getItem('dark-mode');
+    if (temaSalvo === 'true') {
+      document.body.classList.add('dark-mode');
+      toggle.checked = true;
+      logoMain.src = logos.dark;
+    }
+
+    toggle.addEventListener('change', () => {
+      const dark = toggle.checked;
+      document.body.classList.toggle('dark-mode', dark);
+      localStorage.setItem('dark-mode', dark);
+      logoMain.src = dark ? logos.dark : logos.default;
+    });
+
+    // Validação e simulação de cadastro
+    const form = document.getElementById('formCadastro');
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const nome = document.getElementById('nome').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const senha = document.getElementById('senha').value;
+      const confirmarSenha = document.getElementById('confirmar-senha').value;
+
+      if (senha !== confirmarSenha) {
+        alert('As senhas não coincidem!');
+        return;
+      }
+
+      // Simulação (sem Supabase)
+      alert(`Cadastro realizado com sucesso!\nNome: ${nome}\nEmail: ${email}`);
+      form.reset();
+    });
+  </script>
+</body>
+</html>
