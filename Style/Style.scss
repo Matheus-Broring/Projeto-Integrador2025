@@ -149,6 +149,23 @@ input:checked + .slider:before {
   color: #222;
 }
 
+.des2 {
+  text-align: center;
+  font-size: 1.2rem;
+  max-width: 65vw;
+  margin: 2rem auto;
+  line-height: 1.6;
+  transition: text-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.des2:hover {
+  text-shadow: 0px 4px 12px rgba(99, 97, 97, 0.7); /* sombra só no texto */
+  scale: 1.05;
+  cursor: pointer;
+}
+
+
+
 .carrossel {
   max-width: 100vw;
   overflow: hidden;
@@ -297,9 +314,21 @@ input:focus {
   box-shadow: 0 0 6px #00c3ff;
 }
 
-button {
-  background-color: #00c3ff;
-  color: white;
+.botao{
+  flex-direction: row; /* coloca na horizontal */
+  gap: 20px;
+  padding: 2%;
+
+}
+
+.botao img{
+  width: auto;
+  height: 150px;
+}
+
+button{
+  background-color:whitesmoke;
+  color: black;
   padding: 0.9rem;
   border: none;
   border-radius: 10px;
@@ -307,10 +336,14 @@ button {
   cursor: pointer;
   transition: background-color 0.3s ease;
   font-weight: 700;
+  margin: 3%;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 button:hover {
-  background-color: #009fc4;
+  scale: 1.1; 
+  background-color:whitesmoke;
+ box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.7);
 }
 
 .signup-link {
@@ -349,6 +382,12 @@ button:hover {
 .dark-mode .des {
   color: #ddd;
 }
+.dark-mode .des2:hover {
+  text-shadow: 0px 4px 12px rgba(197, 194, 194, 0.7); /* sombra só no texto */
+  scale: 1.05;
+  cursor: pointer;
+}
+
 
 .dark-mode input[type=email],
 .dark-mode input[type=password],
@@ -364,7 +403,6 @@ button:hover {
 
 .dark-mode button {
   background-color: #333;
-  color: #fff;
 }
 
 .dark-mode button:hover {
@@ -383,3 +421,16 @@ button:hover {
   color: #80c0ff;
 }
 
+.fim{
+ height: 25vh;
+ width: 100%;
+ background-color: rgb(63, 63, 63);
+
+}
+.fim2{
+  height:7vh;
+  width: 100%;
+  background-color:gray;
+ text-align: center;
+
+}

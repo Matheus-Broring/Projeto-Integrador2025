@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap");
 * {
   box-sizing: border-box;
@@ -11,27 +12,6 @@ body {
   overflow-x: hidden;
   background-color: #f5f5f5;
   color: #222;
-}
-
-.botao {
-  background: whitesmoke;
-  color: gray;
-  border: none;
-  padding: 15px 40px;
-  font-size: 18px;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-  .botao:hover {
-    transform: scale(1.1);
-    box-shadow: 0 10px 25px rgb(0, 0, 0);
-    background-color: whitesmoke;
-  }
-
-.Blogin {
-  background: #335969;
-  background: radial-gradient(circle, rgb(51, 89, 105) 0%, rgb(3, 35, 46) 100%);
 }
 
 .Bcadastro {
@@ -134,7 +114,7 @@ input:checked + .slider:before {
   height: 60%;
   display: flex;
   -o-object-fit: contain;
-  object-fit: contain;
+     object-fit: contain;
   justify-content: center;
   align-items: center;
 }
@@ -145,7 +125,7 @@ input:checked + .slider:before {
   display: flex;
   margin-left: 20%;
   -o-object-fit: contain;
-  object-fit: contain;
+     object-fit: contain;
   justify-content: center;
   align-items: center;
 }
@@ -169,6 +149,21 @@ input:checked + .slider:before {
   margin: 2rem auto;
   line-height: 1.6;
   color: #222;
+}
+
+.des2 {
+  text-align: center;
+  font-size: 1.2rem;
+  max-width: 65vw;
+  margin: 2rem auto;
+  line-height: 1.6;
+  transition: text-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.des2:hover {
+  text-shadow: 0px 4px 12px rgba(99, 97, 97, 0.7); /* sombra só no texto */
+  scale: 1.05;
+  cursor: pointer;
 }
 
 .carrossel {
@@ -201,7 +196,7 @@ input:checked + .slider:before {
   width: 150px;
   height: auto;
   -o-object-fit: contain;
-  object-fit: contain;
+     object-fit: contain;
 }
 
 @keyframes deslizar {
@@ -299,9 +294,9 @@ form label {
   color: #ddd;
 }
 
-input[type="email"],
-input[type="password"],
-input[type="text"] {
+input[type=email],
+input[type=password],
+input[type=text] {
   padding: 0.9rem;
   margin-bottom: 1.3rem;
   border: none;
@@ -317,9 +312,20 @@ input:focus {
   box-shadow: 0 0 6px #00c3ff;
 }
 
+.botao {
+  flex-direction: row; /* coloca na horizontal */
+  gap: 20px;
+  padding: 2%;
+}
+
+.botao img {
+  width: auto;
+  height: 150px;
+}
+
 button {
-  background-color: #00c3ff;
-  color: white;
+  background-color: whitesmoke;
+  color: black;
   padding: 0.9rem;
   border: none;
   border-radius: 10px;
@@ -327,10 +333,14 @@ button {
   cursor: pointer;
   transition: background-color 0.3s ease;
   font-weight: 700;
+  margin: 3%;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 button:hover {
-  background-color: #009fc4;
+  scale: 1.1;
+  background-color: whitesmoke;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.7);
 }
 
 .signup-link {
@@ -370,9 +380,15 @@ button:hover {
   color: #ddd;
 }
 
-.dark-mode input[type="email"],
-.dark-mode input[type="password"],
-.dark-mode input[type="text"] {
+.dark-mode .des2:hover {
+  text-shadow: 0px 4px 12px rgba(197, 194, 194, 0.7); /* sombra só no texto */
+  scale: 1.05;
+  cursor: pointer;
+}
+
+.dark-mode input[type=email],
+.dark-mode input[type=password],
+.dark-mode input[type=text] {
   background-color: #2a2a2a;
   border: 1px solid #444;
   color: #f5f5f5;
@@ -388,7 +404,6 @@ button:hover {
 
 .dark-mode button {
   background-color: #333;
-  color: #fff;
 }
 
 .dark-mode button:hover {
@@ -405,4 +420,17 @@ button:hover {
 
 .dark-mode .signup-link a:hover {
   color: #80c0ff;
-} /*# sourceMappingURL=Style.css.map */
+}
+
+.fim {
+  height: 25vh;
+  width: 100%;
+  background-color: rgb(63, 63, 63);
+}
+
+.fim2 {
+  height: 7vh;
+  width: 100%;
+  background-color: gray;
+  text-align: center;
+}/*# sourceMappingURL=Style.css.map */
