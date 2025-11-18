@@ -4,32 +4,33 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login - HistoryCar</title>
-  <link rel="stylesheet" href=/css/style.css />
+  <link rel="stylesheet" href="/css/style.css" />
 </head>
+
 <body class="Blogin">
   <main class="login-container">
     <div class="dark-mode-toggle">
       <label class="switch">
-        <input type="checkbox" id="dark-mode-toggle" />
+        <input type="checkbox" id="darkToggle" />
         <span class="slider"></span>
       </label>
     </div>
 
     <section class="login-box">
       <div class="logo-container">
-        <a href="Home.html"><img src="/Style/img/image-Photoroom - Copia.png" alt="Logo HistoryCar" class="logo-L"></a>
+        <a href="Home.html"><img src="/Style/img/image-Photoroom - Copia.png" class="logo-L"></a>
       </div>
 
       <h1>Entrar no HistoryCar</h1>
 
       <form id="login-form">
-        <label for="email">Email:</label>
-        <input type="email" id="email" placeholder="Digite seu email" required />
+        <label>Email:</label>
+        <input type="email" id="email" required />
 
-        <label for="senha">Senha:</label>
-        <input type="password" id="senha" placeholder="Digite sua senha" required />
+        <label>Senha:</label>
+        <input type="password" id="senha" required />
 
-        <button type="submit">Entrar</button>
+        <button class="submit" type="submit">Entrar</button>
       </form>
 
       <p class="signup-link">
@@ -38,40 +39,25 @@
     </section>
   </main>
 
+  <script type="module" src="/js/darkmode.js"></script>
+
   <script type="module">
-    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+    import { loginUsuario } from "/js/auth.js";
 
-    const supabase = createClient(
-      'https://seu-projeto.supabase.co', // substitua pela sua URL do Supabase
-      'chave-pública-do-supabase'        // substitua pela sua chave pública
-    );
+    const form = document.getElementById("login-form");
 
-    const toggle = document.getElementById('dark-mode-toggle');
-    const form = document.getElementById('login-form');
-
-    // Modo escuro
-    if (localStorage.getItem('dark-mode') === 'true') {
-      document.body.classList.add('dark-mode');
-      toggle.checked = true;
-    }
-
-    toggle.addEventListener('change', () => {
-      document.body.classList.toggle('dark-mode');
-      localStorage.setItem('dark-mode', document.body.classList.contains('dark-mode'));
-    });
-
-    // Login Supabase
-    form.addEventListener('submit', async (event) => {
+    form.addEventListener("submit", async (event) => {
       event.preventDefault();
-      const email = document.getElementById('email').value;
-      const senha = document.getElementById('senha').value;
+
+      const email = document.getElementById("email").value.trim();
+      const senha = document.getElementById("senha").value;
 
       try {
-        const { error } = await supabase.auth.signInWithPassword({ email, password: senha });
-        if (error) throw error;
-        alert('Login realizado com sucesso!');
+        await loginUsuario(email, senha);
+        alert("Login realizado com sucesso!");
+        window.location.href = "Home.html";
       } catch (error) {
-        alert('Erro ao fazer login: ' + error.message);
+        alert("Erro ao fazer login: " + error.message);
       }
     });
   </script>

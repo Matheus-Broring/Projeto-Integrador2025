@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat ao Vivo</title>
+    <link rel="stylesheet" href="chat.css">
+</head>
+<body class="bodyCH">
+
+    <div class="chat-container">
+
+        <div class="chat-header">
+            <h2>Chat ao Vivo</h2>
+        </div>
+
+        <div class="chat-messages" id="chatMessages"></div>
+
+        <form id="chatForm" class="chat-input">
+            <input type="text" id="messageInput" placeholder="Digite sua mensagem..." required>
+            <button type="submit">Enviar</button>
+        </form>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script type="module" src="chat.js"></script>
+
+</body>
+</html>
