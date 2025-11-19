@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="/style/Img/favicon.ico">
+  <title>HistoryCar</title>
+
+  <!-- CSS externo -->
+  <link rel="stylesheet" href=/css/style.css />
+</head>
+
+<body>
+  <div class="home-container">
+    <div class="barra"></div>
+
+    <!-- Botão de modo escuro -->
+    <div class="dark-mode-toggle">
+      <label class="switch">
+        <input type="checkbox" id="darkToggle" />
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <!-- Ícones de lupa e perfil -->
+    <div class="cards-container">
+      <div class="card lupa-card" title="Pesquisar">
+        <img src="/style/img/lupa.png" alt="Ícone de lupa" class="icon-lupa" id="lupaIcon" />
+      </div>
+      <div class="card perfil-card" title="Perfil">
+        <a href="login.html">
+          <img src="/style/img/OIP-removebg-preview (1).png" alt="Ícone de perfil" class="icon-perfil" />
+        </a>
+      </div>
+    </div>
+
+    <!-- Logo principal -->
+    <div class="jubileu">
+      <img src="/style/img/image-Photoroom.png" class="logo" alt="Logo HistoryCar" id="logoMain" />
+    </div>
+
+    <h2 class="des">
+      HistoryCar é um site para quem quer conhecer a história dos carros e das marcas que marcaram época.
+      Aqui você encontra curiosidades, a evolução dos automóveis e as origens das maiores fabricantes do mundo.
+    </h2>
+
+    <!-- Carrossel de logos -->
+    <div class="carrossel">
+      <div class="slides">
+        <div class="slide"><a href="bmw.html"><img src="/style/img/bmwlogo.png" alt="BMW" /></a></div>
+        <div class="slide"><img src="/style/img/images-removebg-preview.png" alt="VW" /></div>
+        <div class="slide"><img src="/style/img/logo audi.png" alt="Audi" id="audiLogo" /></div>
+        <div class="slide"><img src="/style/img/logo chevrolet.png" alt="Chevrolet" /></div>
+        <div class="slide"><img src="/style/img/logo nissan.png" alt="Nissan" id="nissanLogo" /></div>
+        <div class="slide"><img src="/style/img/logofiat.png" alt="Fiat" /></div>
+        <div class="slide"><img src="/style/img/logomitsu sla.png" alt="Mitsubishi" /></div>
+
+        <!-- Repetição p/ rolagem contínua -->
+        <div class="slide"><img src="/style/img/bmwlogo.png" alt="BMW" /></div>
+        <div class="slide"><img src="/style/img/images-removebg-preview.png" alt="VW" /></div>
+        <div class="slide"><img src="/style/img/logo audi.png" alt="Audi" /></div>
+        <div class="slide"><img src="/style/img/logo chevrolet.png" alt="Chevrolet" /></div>
+        <div class="slide"><img src="/style/img/logo nissan.png" alt="Nissan" /></div>
+        <div class="slide"><img src="/style/img/logofiat.png" alt="Fiat" /></div>
+        <div class="slide"><img src="/style/img/logomitsu sla.png" alt="Mitsubishi" /></div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="des2">Abaixo, você encontra uma seleção de marcas organizadas para facilitar sua navegação. Utilize os botões para acessar informações detalhadas sobre cada marca.
+
+  </h2>
+
+  <div class="Cbotao">
+    <button class="botao">
+      <img src="/style/Img/logo chevrolet.png" alt="">
+    </button>
+    <button class="botao">
+     <img src="/style/Img/muie.jpg" alt="">
+    </button>
+
+    <button class="botao">
+      <img src="/style/Img/logomitsu sla.png" alt="">
+    </button>
+
+    <button class="botao">
+      <img src="/style/Img/logo audi.png" alt="">
+    </button>
+    
+    <button class="botao">
+      <img src="/style/Img/logofiat.png" alt="">
+    </button>
+
+  </div>
+  <!-- Script de dark mode -->
+  <script>
+    const toggle = document.getElementById('darkToggle');
+    const lupaIcon = document.getElementById('lupaIcon');
+    const logoMain = document.getElementById('logoMain');
+    const audiLogo = document.getElementById('audiLogo');
+    const nissanLogo = document.getElementById('nissanLogo');
+
+    const logos = {
+      default: {
+        logoMain: '/style/img/image-Photoroom.png',
+        lupa: '/style/img/lupa.png',
+        audi: '/style/img/logo audi.png',
+        nissan: '/style/img/logo nissan.png',
+      },
+      dark: {
+        logoMain: '/style/img/image-Photoroom - Copia.png',
+        lupa: '/style/img/lupa-B.png',
+        audi: '/style/img/logo audi branco.png',
+        nissan: '/style/img/logo nissan branco.png',
+      },
+    };
+
+    // Carrega o tema salvo
+    const temaSalvo = localStorage.getItem('dark-mode');
+    if (temaSalvo === 'true') {
+      document.body.classList.add('dark-mode');
+      toggle.checked = true;
+      setDarkModeImages(true);
+    }
+
+    toggle.addEventListener('change', () => {
+      const dark = toggle.checked;
+      document.body.classList.toggle('dark-mode', dark);
+      localStorage.setItem('dark-mode', dark);
+      setDarkModeImages(dark);
+    });
+
+    function setDarkModeImages(isDark) {
+      const theme = isDark ? logos.dark : logos.default;
+      lupaIcon.src = theme.lupa;
+      logoMain.src = theme.logoMain;
+      audiLogo.src = theme.audi;
+      nissanLogo.src = theme.nissan;
+    }
+  </script>
+  <div class="fim">
+    <img src="img/favicon.ico" >
+  </div>
+        <div class="fim2">
+          <a href="https://www.youtube.com/watch?v=hGjVh0Nht8w">© 2025. Todos os direitos reservados aos criadores.O uso não autorizado de qualquer conteúdo deste site pode resultar em medidas legais e ilegais.</a>
+  </div>
+</body>
+</html>

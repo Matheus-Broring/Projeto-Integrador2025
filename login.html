@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - HistoryCar</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body class="Blogin">
+  <main class="login-container">
+    <div class="dark-mode-toggle">
+      <label class="switch">
+        <input type="checkbox" id="darkToggle" />
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <section class="login-box">
+      <div class="logo-container">
+        <a href="home.html"><img src="/style/img/image-Photoroom - Copia.png" class="logo-L"></a>
+      </div>
+
+      <h1>Entrar no HistoryCar</h1>
+
+      <form id="login-form">
+        <label>Email:</label>
+        <input type="email" id="email" required />
+
+        <label>Senha:</label>
+        <input type="password" id="senha" required />
+
+        <button class="submit" type="submit">Entrar</button>
+      </form>
+
+      <p class="signup-link">
+        Não tem conta? <a href="cadstro.html">Cadastre-se</a>
+      </p>
+    </section>
+  </main>
+
+  <script type="module" src="/js/darkmode.js"></script>
+
+  <script type="module">
+    import { loginUsuario } from "/js/auth.js";
+
+    const form = document.getElementById("login-form");
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const email = document.getElementById("email").value.trim();
+      const senha = document.getElementById("senha").value;
+
+      try {
+        await loginUsuario(email, senha);
+        alert("Login realizado com sucesso!");
+        window.location.href = "home.html";
+      } catch (error) {
+        alert("Erro ao fazer login: " + error.message);
+      }
+    });
+  </script>
+</body>
+</html>
