@@ -3,78 +3,142 @@ import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 const SUPABASE_URL = "https://dtleskmrqtusfekwrmsk.supabase.co";
 const SUPABASE_KEY = "sb_publishable_GCMe0MDqjp2pAwIl8OTNvw_Np9IPJ_I";
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+export const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 let currentUser = null;
+let currentUserName = null;
+let realtimeChannel = null;
 
-// 🔹 Carregar usuário logado
+const chatMessages = document.getElementById("chatMessages");
+const connectionStatus = document.getElementById("connectionStatus");
+
+// -------------------------
+// Carregar usuário logado
+// -------------------------
 (async function loadUser() {
     const { data } = await supabase.auth.getUser();
     currentUser = data.user;
 
     if (!currentUser) {
         alert("Você precisa estar logado para usar o chat.");
-        window.location.href = "Login.html";
+        window.location.href = "login.html";
+        return;
     }
+
+    // Buscar nome real na tabela users
+    const { data: userData } = await supabase
+        .from("users")
+        .select("name")
+        .eq("id", currentUser.id)
+        .single();
+
+    currentUserName = userData?.name || "Usuário";
+
+    connectionStatus.innerHTML = `🟢 Logado como: ${currentUserName}`;
+
+    await loadMessages();
+    setupRealtime();
 })();
 
-// 🔹 Função para adicionar mensagem no chat
-function addMessage(message) {
-    const div = document.createElement("div");
-
-    const isMine = message.user_id === currentUser?.id;
-
-    div.classList.add("message", isMine ? "my-message" : "other-message");
-
-    div.innerHTML = `
-        ${message.message}
-        <div class="message-time">${new Date(message.created_at).toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" })}</div>
-    `;
-
-    document.getElementById("chatMessages").appendChild(div);
-
-    // scroll para o fim automaticamente
-    const chat = document.getElementById("chatMessages");
-    chat.scrollTop = chat.scrollHeight;
-}
-
-// 🔹 Carregar mensagens antigas
+// -------------------------
+// Carregar mensagens
+// -------------------------
 async function loadMessages() {
-    const { data, error } = await supabase
+    const { data } = await supabase
         .from("chat_messages")
         .select("*")
         .order("created_at", { ascending: true });
 
-    if (data) data.forEach(addMessage);
+    chatMessages.innerHTML = "";
+    data?.forEach(msg => addMessageToDOM(msg));
+
+    chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
-loadMessages();
+// -------------------------
+// Adicionar mensagem no DOM
+// -------------------------
+function addMessageToDOM(msg) {
+    const div = document.createElement("div");
+    div.classList.add("message");
 
-// 🔹 Receber mensagens em tempo real
-supabase
-    .channel("chat-realtime")
-    .on(
-        "postgres_changes",
-        { event: "INSERT", schema: "public", table: "chat_messages" },
-        (payload) => addMessage(payload.new)
-    )
-    .subscribe();
+    if (msg.user_id === currentUser.id) {
+        div.classList.add("own-message");
+    }
 
-// 🔹 Enviar mensagem
+    div.innerHTML = `
+        <div class="message-user">
+            ${msg.user_id === currentUser.id ? currentUserName : msg.sender_name}
+            <span class="message-time">
+                ${new Date(msg.created_at).toLocaleTimeString("pt-BR", {
+                    hour: "2-digit",
+                    minute: "2-digit"
+                })}
+            </span>
+        </div>
+        <div class="message-content">${msg.message}</div>
+    `;
+
+    chatMessages.appendChild(div);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+// -------------------------
+// Realtime (sem duplicar)
+// -------------------------
+function setupRealtime() {
+    if (realtimeChannel) {
+        supabase.removeChannel(realtimeChannel);
+    }
+
+    realtimeChannel = supabase
+        .channel("chat-realtime")
+        .on(
+            "postgres_changes",
+            { event: "INSERT", schema: "public", table: "chat_messages" },
+            payload => addMessageToDOM(payload.new)
+        )
+        .on(
+            "postgres_changes",
+            { event: "DELETE", schema: "public", table: "chat_messages" },
+            () => loadMessages()
+        )
+        .subscribe();
+}
+
+// -------------------------
+// Enviar mensagem
+// -------------------------
 document.getElementById("chatForm").addEventListener("submit", async (e) => {
     e.preventDefault();
-
     const input = document.getElementById("messageInput");
     const text = input.value.trim();
-
-    if (text === "") return;
+    if (!text) return;
 
     await supabase.from("chat_messages").insert([
         {
             user_id: currentUser.id,
-            message: text,
-        },
+            sender_name: currentUserName,  // <<< Aqui está a correção
+            message: text
+        }
     ]);
 
     input.value = "";
+});
+
+// -------------------------
+// Limpar chat
+// -------------------------
+document.getElementById("clearChat").addEventListener("click", async () => {
+    const confirmClear = confirm("Tem certeza que deseja limpar todo o chat?");
+    if (!confirmClear) return;
+
+    const { error } = await supabase
+        .from("chat_messages")
+        .delete()
+        .neq("id", 0);
+
+    if (!error) {
+        chatMessages.innerHTML = "";
+    }
 });
