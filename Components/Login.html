@@ -18,7 +18,7 @@
 
     <section class="login-box">
       <div class="logo-container">
-        <a href="Home.html"><img src="/Style/img/image-Photoroom - Copia.png" class="logo-L"></a>
+        <a href="home.html"><img src="/style/img/image-Photoroom - Copia.png" class="logo-L"></a>
       </div>
 
       <h1>Entrar no HistoryCar</h1>
@@ -34,7 +34,7 @@
       </form>
 
       <p class="signup-link">
-        Não tem conta? <a href="Cadstro.html">Cadastre-se</a>
+        Não tem conta? <a href="cadstro.html">Cadastre-se</a>
       </p>
     </section>
   </main>
@@ -55,7 +55,7 @@
       try {
         await loginUsuario(email, senha);
         alert("Login realizado com sucesso!");
-        window.location.href = "Home.html";
+        window.location.href = "home.html";
       } catch (error) {
         alert("Erro ao fazer login: " + error.message);
       }
