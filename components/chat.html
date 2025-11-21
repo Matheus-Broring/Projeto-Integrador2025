@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta viewport="width=device-width, initial-scale=1">
   <title>HistoryCar — Chat</title>
 
   <!-- CSS PRINCIPAL -->
@@ -11,52 +11,53 @@
 
 <body>
 
-  <!-- Barra igual à Home -->
+  <!-- Barra -->
   <div class="barra"></div>
 
-  <!-- Cards iguais da Home -->
-  <div class="cards-container">
-    <div class="card lupa-card" title="Pesquisar">
-      <a href="chat.html"><img src="/style/img/lupa.png" alt="Ícone de lupa" class="icon-lupa" id="lupaIcon" /></a>
-    </div>
-    <div class="card perfil-card" title="Perfil">
-      <a href="login.html">
-        <img src="/style/img/OIP-removebg-preview (1).png" alt="Ícone de perfil" class="icon-perfil" />
-      </a>
-    </div>
-  </div>
-
-  <!-- Dark Mode -->
+  <!-- Botão de modo escuro -->
   <div class="dark-mode-toggle">
     <label class="switch">
-      <input type="checkbox" id="darkToggle">
+      <input type="checkbox" id="darkToggle" />
       <span class="slider"></span>
     </label>
   </div>
 
-  <!-- Logo -->
-  <div class="jubileu" style="margin-top:14vh;">
-    <img src="../style/img/image-Photoroom.png" id="logoMain" class="logo">
+  <!-- Ícones de lupa e perfil -->
+  <div class="cards-container">
+    <div class="card lupa-card" title="Pesquisar">
+      <a href="chat.html">
+        <img src="/style/img/lupa.png" alt="Ícone de lupa" class="icon-lupa" id="lupaIcon">
+      </a>
+    </div>
+
+    <div class="card perfil-card" title="Perfil">
+      <a href="login.html">
+        <img src="/style/img/OIP-removebg-preview (1).png" alt="Ícone de perfil" class="icon-perfil">
+      </a>
+    </div>
+  </div>
+
+  <div class="jubileu">
+      <a href="home.html"><img src="/style/img/image-Photoroom.png" class="logo" alt="Logo HistoryCar" id="logoMain" /></a>
   </div>
 
   <!-- Card do chat -->
-  <div style="max-width:900px;margin:4vh auto;padding:20px;background:#fff;border-radius:15px;box-shadow:0 0 25px rgba(0,0,0,0.3);">
-    <h2 class="des2">💬 Chat em Tempo Real</h2>
+  <div class="chat-card">
+    
+    <h2 class="des3">💬 Chat em Tempo Real</h2>
 
     <div id="connectionStatus"></div>
-    <div id="chatMessages" class="chat-messages" style="max-height:400px;overflow-y:auto;"></div>
+
+    <div id="chatMessages" class="chat-messages"></div>
 
     <!-- FORMULÁRIO -->
-    <form id="chatForm" style="display:flex;gap:10px;margin-top:20px;">
-      <input id="messageInput" placeholder="Digite sua mensagem..." required 
-        style="flex:1;padding:12px;border-radius:10px;border:1px solid #aaa;">
-      <button type="submit" class="submit" style="width:130px;">Enviar</button>
+    <form id="chatForm" class="chat-form">
+      <input id="messageInput" placeholder="Digite sua mensagem..." required class="chat-input">
+      <button type="submit" class="submit">Enviar</button>
     </form>
 
     <!-- BOTÃO LIMPAR CHAT -->
-    <button id="clearChat" style="margin-top:10px;padding:10px 20px;border:none;border-radius:8px;background:red;color:#fff;cursor:pointer;">
-      Limpar Chat
-    </button>
+    <button id="clearChat" class="clear-chat">Limpar Chat</button>
 
   </div>
 
@@ -73,13 +74,13 @@
     if (localStorage.getItem("dark-mode") === "true") {
       document.body.classList.add("dark-mode");
       toggle.checked = true;
-      logoMain.src = logos.dark;
+      if (logoMain) logoMain.src = logos.dark;
     }
 
     toggle.addEventListener("change", () => {
       const dark = toggle.checked;
       document.body.classList.toggle("dark-mode", dark);
-      logoMain.src = dark ? logos.dark : logos.light;
+      if (logoMain) logoMain.src = dark ? logos.dark : logos.light;
       localStorage.setItem("dark-mode", dark);
     });
   </script>

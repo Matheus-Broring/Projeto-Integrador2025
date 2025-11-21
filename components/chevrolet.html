@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HistoryCar - Chevrolet</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <!-- Barra fixa -->
+    <div class="barra"></div>
+
+    <!-- Botão de modo escuro -->
+    <div class="dark-mode-toggle">
+      <label class="switch">
+        <input type="checkbox" id="darkToggle" />
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <!-- Cards colados na barra -->
+    <div class="cards-container">
+      <div class="card lupa-card" title="Pesquisar">
+        <a href="chat.html">
+          <img src="/style/img/lupa.png" alt="Ícone de lupa" class="icon-lupa" id="lupaIcon" />
+        </a>
+      </div>
+
+      <div class="card perfil-card" title="Perfil">
+        <a href="login.html">
+          <img src="/style/img/OIP-removebg-preview (1).png" alt="Ícone de perfil" class="icon-perfil" />
+        </a>
+      </div>
+    </div>
+
+    <!-- Logo centralizada -->
+    <div class="jubileu">
+      <img src="/style/img/image-Photoroom.png" class="logo" alt="Logo HistoryCar" id="logoMain" />
+    </div>
+    
+    <script>
+    const toggle = document.getElementById('darkToggle');
+    const lupaIcon = document.getElementById('lupaIcon');
+    const logoMain = document.getElementById('logoMain');
+    const audiLogo = document.getElementById('audiLogo');
+    const nissanLogo = document.getElementById('nissanLogo');
+
+    const logos = {
+      default: {
+        logoMain: '/style/img/image-Photoroom.png',
+        lupa: '/style/img/lupa.png',
+      },
+      dark: {
+        logoMain: '/style/img/image-Photoroom - Copia.png',
+        lupa: '/style/img/lupa-B.png',
+      },
+    };
+
+    const temaSalvo = localStorage.getItem('dark-mode');
+    if (temaSalvo === 'true') {
+      document.body.classList.add('dark-mode');
+      toggle.checked = true;
+      setDarkModeImages(true);
+    }
+
+    toggle.addEventListener('change', () => {
+      const dark = toggle.checked;
+      document.body.classList.toggle('dark-mode', dark);
+      localStorage.setItem('dark-mode', dark);
+      setDarkModeImages(dark);
+    });
+
+    function setDarkModeImages(isDark) {
+      const theme = isDark ? logos.dark : logos.default;
+      lupaIcon.src = theme.lupa;
+      logoMain.src = theme.logoMain;
+      audiLogo.src = theme.audi;
+      nissanLogo.src = theme.nissan;
+    }
+  </script>
+
+</body>
+</html>
