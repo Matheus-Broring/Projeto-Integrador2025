@@ -9,6 +9,8 @@
 <body>
 
     <!-- Barra fixa -->
+   
+    <!-- Barra fixa -->
     <div class="barra"></div>
 
     <!-- Botão de modo escuro -->
@@ -36,49 +38,68 @@
 
     <!-- Logo centralizada -->
     <div class="jubileu">
-      <img src="/style/img/image-Photoroom.png" class="logo" alt="Logo HistoryCar" id="logoMain" />
+      <a href="home.html"><img src="/style/img/image-Photoroom.png" class="logo" alt="Logo HistoryCar" id="logoMain" /></a>
     </div>
-    
+
+    <!-- CONTEÚDO NOVO (modelo do Figma – Terceira tela) -->
+    <main class="conteudo">
+
+        <h1 class="titulo-marca">Chevrolet</h1>
+
+       <div class="bloco">
+    <p class="texto">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat a architecto eveniet voluptatem dolor tenetur iure, aliquam voluptas fugit dolorum dicta neque et cupiditate magnam? Facilis vel molestiae adipisci. Laborum!</p>
+    <div class="img-box img1">IMG 1</div>
+</div>
+
+<div class="bloco">
+    <p class="texto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, labore perspiciatis ullam laborum voluptas doloribus fugiat impedit temporibus, unde earum vero ducimus maxime obcaecati consequatur corporis quam accusantium fuga harum?</p>
+    <div class="img-box img2">IMG 2</div>
+</div>
+
+<div class="bloco">
+    <p class="texto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure possimus quidem nihil quisquam placeat autem dicta ipsum sed sunt, atque minima. Debitis itaque cum asperiores! Provident vero distinctio cum illum.</p>
+    <div class="img-box img3">IMG 3</div>
+</div>
+
+    </main>
+
+    <!-- SCRIPT JÁ EXISTENTE -->
     <script>
-    const toggle = document.getElementById('darkToggle');
-    const lupaIcon = document.getElementById('lupaIcon');
-    const logoMain = document.getElementById('logoMain');
-    const audiLogo = document.getElementById('audiLogo');
-    const nissanLogo = document.getElementById('nissanLogo');
+        const toggle = document.getElementById('darkToggle');
+        const lupaIcon = document.getElementById('lupaIcon');
+        const logoMain = document.getElementById('logoMain');
 
-    const logos = {
-      default: {
-        logoMain: '/style/img/image-Photoroom.png',
-        lupa: '/style/img/lupa.png',
-      },
-      dark: {
-        logoMain: '/style/img/image-Photoroom - Copia.png',
-        lupa: '/style/img/lupa-B.png',
-      },
-    };
+        const logos = {
+          default: {
+            logoMain: '/style/img/image-Photoroom.png',
+            lupa: '/style/img/lupa.png',
+          },
+          dark: {
+            logoMain: '/style/img/image-Photoroom - Copia.png',
+            lupa: '/style/img/lupa-B.png',
+          },
+        };
 
-    const temaSalvo = localStorage.getItem('dark-mode');
-    if (temaSalvo === 'true') {
-      document.body.classList.add('dark-mode');
-      toggle.checked = true;
-      setDarkModeImages(true);
-    }
+        const temaSalvo = localStorage.getItem('dark-mode');
+        if (temaSalvo === 'true') {
+          document.body.classList.add('dark-mode');
+          toggle.checked = true;
+          setDarkModeImages(true);
+        }
 
-    toggle.addEventListener('change', () => {
-      const dark = toggle.checked;
-      document.body.classList.toggle('dark-mode', dark);
-      localStorage.setItem('dark-mode', dark);
-      setDarkModeImages(dark);
-    });
+        toggle.addEventListener('change', () => {
+          const dark = toggle.checked;
+          document.body.classList.toggle('dark-mode', dark);
+          localStorage.setItem('dark-mode', dark);
+          setDarkModeImages(dark);
+        });
 
-    function setDarkModeImages(isDark) {
-      const theme = isDark ? logos.dark : logos.default;
-      lupaIcon.src = theme.lupa;
-      logoMain.src = theme.logoMain;
-      audiLogo.src = theme.audi;
-      nissanLogo.src = theme.nissan;
-    }
-  </script>
+        function setDarkModeImages(isDark) {
+          const theme = isDark ? logos.dark : logos.default;
+          lupaIcon.src = theme.lupa;
+          logoMain.src = theme.logoMain;
+        }
+    </script>
 
 </body>
 </html>

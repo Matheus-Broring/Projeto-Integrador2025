@@ -466,6 +466,71 @@ input:checked + .slider:before {
     border-radius:6px;
 }
 
+.conteudo {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+    margin-top: 4rem;
+}
+
+.titulo-marca {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.texto {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    width: 50%;
+}
+
+.img-box {
+    width: 45%;
+    height: 270px;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0;
+}
+
+.img1 { background: #c94b4b; }
+.img2 { background: #0096c7; }
+.img3 { background: #5a189a; }
+
+.bloco {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    margin: 3rem 0;
+}
+
+.bloco:nth-child(odd) {
+    flex-direction: row-reverse;
+}
+
+.bloco:nth-child(even) {
+    flex-direction: row;
+}
+
+@media (max-width: 900px) {
+    .bloco {
+        flex-direction: column;
+        text-align: center;
+    }
+    .texto {
+        width: 90%;
+    }
+    .img-box {
+        width: 90%;
+        height: 220px;
+    }
+}
 
 
 .login-container {
