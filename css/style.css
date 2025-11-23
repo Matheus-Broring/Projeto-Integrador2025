@@ -121,7 +121,7 @@ input:checked + .slider:before {
   width: 60%;
   height: 60%;
   -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
   display: block; /* corrige alinhamento */
   margin: 0 auto; /* centraliza */
 }
@@ -130,6 +130,14 @@ input:checked + .slider:before {
   height: 49.5vh;
   width: 33vw;
   margin-top: 2vh;
+}
+
+.logoM {
+  width: 35vw; /* grande mas não exagerada */
+  max-width: 420px; /* evita ficar gigante demais */
+  display: block;
+  margin: 120px auto 40px; /* empurra a logo para baixo */
+  height: auto;
 }
 
 .jubileu {
@@ -197,7 +205,7 @@ input:checked + .slider:before {
   width: 150px;
   height: auto;
   -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 
 @keyframes deslizar {
@@ -215,10 +223,6 @@ input:checked + .slider:before {
   .des {
     width: 90%;
     font-size: 1rem;
-  }
-  .logo {
-    width: 60vw;
-    height: auto;
   }
   .cards-container {
     max-width: 90vw;
@@ -474,85 +478,95 @@ input:checked + .slider:before {
 }
 
 .conteudo {
-    width: 90%;
-    max-width: 1100px;
-    margin: 0 auto;
-    margin-top: 4rem;
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+  margin-top: 4rem;
 }
 
 .titulo-marca {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 2rem;
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
 }
 
 .texto {
-    font-size: 1.15rem;
-    line-height: 1.7;
-    width: 50%;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  width: 50%;
 }
 
 .img-box {
-    width: 45%;
-    height: 270px;
-    border-radius: 12px;
-    color: #fff;
-    font-size: 1.3rem;
-    font-weight: 700;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 2rem 0;
-    transition: 0.3s ease;
+  width: 45%;
+  height: 270px;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+  /* sombra só embaixo */
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.35);
+  /* animação suave */
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.img1 { background: #c94b4b; }
-.img2 { background: #0096c7; }
-.img3 { background: #5a189a; }
-
+/* aumenta no hover */
 .img-box:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 8px 25px rgba(0,0,0,0.35);
+  transform: scale(1.05);
+  box-shadow: 0px 14px 32px rgba(0, 0, 0, 0.45);
 }
 
+/* cores */
+.img1 {
+  background: #c94b4b;
+}
+
+.img2 {
+  background: #0096c7;
+}
+
+.img3 {
+  background: #5a189a;
+}
+
+/* controla a ordem: ímpar = imagem esquerda, par = imagem direita */
 .bloco {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 40px;
-    margin: 3rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  margin: 3rem 0;
 }
 
-.bloco:nth-child(1) {
-    flex-direction: row;
+.bloco:nth-child(odd) {
+  flex-direction: row-reverse;
 }
 
-.bloco:nth-child(2) {
-    flex-direction: row-reverse;
+.bloco:nth-child(even) {
+  flex-direction: row;
 }
 
-.bloco:nth-child(3) {
-    flex-direction: row;
-}
-
-.bloco:nth-child(4) {
-    flex-direction: row-reverse;
-}
-
+/* responsivo */
 @media (max-width: 900px) {
-    .bloco {
-        flex-direction: column;
-        text-align: center;
-    }
-    .texto {
-        width: 90%;
-    }
-    .img-box {
-        width: 90%;
-        height: 220px;
-    }
+  .bloco {
+    flex-direction: column;
+    text-align: center;
+  }
+  .texto {
+    width: 90%;
+  }
+  .img-box {
+    width: 90%;
+    height: 220px;
+    transform: none; /* evita bug no mobile */
+  }
+  .img-box:hover {
+    transform: none; /* no mobile não faz sentido aumentar */
+  }
 }
-
 .login-container {
   width: 100%;
   min-height: 100vh;
@@ -858,4 +872,8 @@ button:hover {
   width: 100%;
   background-color: gray;
   text-align: center;
+}
+
+.direitos {
+  color: white;
 }/*# sourceMappingURL=style.css.map */
