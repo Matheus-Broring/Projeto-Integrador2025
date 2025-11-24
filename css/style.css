@@ -1,4 +1,3 @@
-@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap");
 * {
   box-sizing: border-box;
@@ -86,11 +85,10 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
-/* ====== CARDS GRUDADOS NA BARRA (CORRETO) ====== */
 .cards-container {
   display: flex;
   position: fixed;
-  top: 5vh; /* colado na barra */
+  top: 5vh;
   left: 0;
   gap: 20px;
   padding: 0 15px;
@@ -98,7 +96,6 @@ input:checked + .slider:before {
   z-index: 1100;
 }
 
-/* Card padrão */
 .card {
   background-color: #999;
   border-radius: 0 0 15px 15px;
@@ -115,15 +112,14 @@ input:checked + .slider:before {
   background-color: #777;
 }
 
-/* Ícones centralizados corretamente */
 .icon-lupa,
 .icon-perfil {
   width: 60%;
   height: 60%;
   -o-object-fit: contain;
   object-fit: contain;
-  display: block; /* corrige alinhamento */
-  margin: 0 auto; /* centraliza */
+  display: block;
+  margin: 0 auto;
 }
 
 .logo {
@@ -133,10 +129,10 @@ input:checked + .slider:before {
 }
 
 .logoM {
-  width: 35vw; /* grande mas não exagerada */
-  max-width: 420px; /* evita ficar gigante demais */
+  width: 35vw;
+  max-width: 420px;
   display: block;
-  margin: 120px auto 40px; /* empurra a logo para baixo */
+  margin: 120px auto 40px;
   height: auto;
 }
 
@@ -158,15 +154,15 @@ input:checked + .slider:before {
 .des2 {
   text-align: center;
   font-size: 1.2rem;
-  max-width: 65vw; /* igual ao .des */
-  margin: 2rem auto; /* igual ao .des */
-  line-height: 1.6; /* igual ao .des */
-  color: #222; /* igual ao .des */
+  max-width: 65vw;
+  margin: 2rem auto;
+  line-height: 1.6;
+  color: #222;
   transition: text-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .dark-mode .des2 {
-  color: #ddd; /* igual ao dark-mode do .des */
+  color: #ddd;
 }
 
 .des2:hover {
@@ -243,7 +239,6 @@ input:checked + .slider:before {
     font-size: 1rem;
   }
 }
-/* chat.css - estilos pequenos que combinam com a home */
 .chat-messages .message {
   margin: 10px 0;
   padding: 10px 12px;
@@ -295,16 +290,12 @@ input:checked + .slider:before {
   border-radius: 6px;
 }
 
-/* ==========================
-   CHAT – AJUSTADO E INTEGRADO
-   ========================== */
 .bodyCH {
   background-color: #e6e6e6;
   margin: 0;
   font-family: Arial, sans-serif;
 }
 
-/* Centraliza o card do chat na tela */
 .chat-card {
   max-width: 900px;
   margin: 12vh auto 6vh auto;
@@ -314,21 +305,16 @@ input:checked + .slider:before {
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.25);
 }
 
-/* Dark mode do card */
 .dark-mode .chat-card {
   background: #1e1e1e;
 }
 
-/* Título do chat */
 .des3 {
   text-align: center;
   font-size: 1.2rem;
   margin: 1rem 0 2rem 0;
 }
 
-/* ==========================
-   ÁREA DAS MENSAGENS
-   ========================== */
 #chatMessages,
 .chat-messages {
   max-height: 400px;
@@ -348,7 +334,6 @@ input:checked + .slider:before {
   border-color: #333;
 }
 
-/* Estilo das mensagens */
 .message {
   max-width: 75%;
   padding: 10px 14px;
@@ -358,7 +343,6 @@ input:checked + .slider:before {
   font-size: 15px;
 }
 
-/* Sua mensagem (direita) */
 .my-message {
   background-color: #DCF8C6;
   align-self: flex-end;
@@ -369,7 +353,6 @@ input:checked + .slider:before {
   color: #e0e0e0;
 }
 
-/* Mensagem de outro (esquerda) */
 .other-message {
   background-color: #ffffff;
   border: 1px solid #ccc;
@@ -389,9 +372,6 @@ input:checked + .slider:before {
   text-align: right;
 }
 
-/* ==========================
-   FORMULÁRIO DO CHAT
-   ========================== */
 .chat-form {
   display: flex;
   gap: 10px;
@@ -421,7 +401,6 @@ input:checked + .slider:before {
   border-color: #555;
 }
 
-/* Botão enviar */
 .submit,
 .chat-form button {
   width: 130px;
@@ -441,9 +420,6 @@ input:checked + .slider:before {
   background: #005fcc;
 }
 
-/* ==========================
-   BOTÃO LIMPAR CHAT
-   ========================== */
 .clear-chat {
   display: block;
   margin-top: 12px;
@@ -460,7 +436,6 @@ input:checked + .slider:before {
   background: darkred;
 }
 
-/* Status online/offline */
 .status.online {
   background: #d4edda;
   color: #155724;
@@ -507,19 +482,15 @@ input:checked + .slider:before {
   justify-content: center;
   align-items: center;
   margin: 2rem 0;
-  /* sombra só embaixo */
   box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.35);
-  /* animação suave */
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* aumenta no hover */
 .img-box:hover {
   transform: scale(1.05);
   box-shadow: 0px 14px 32px rgba(0, 0, 0, 0.45);
 }
 
-/* cores */
 .img1 {
   background: #c94b4b;
 }
@@ -532,7 +503,6 @@ input:checked + .slider:before {
   background: #5a189a;
 }
 
-/* controla a ordem: ímpar = imagem esquerda, par = imagem direita */
 .bloco {
   display: flex;
   justify-content: space-between;
@@ -549,7 +519,6 @@ input:checked + .slider:before {
   flex-direction: row;
 }
 
-/* responsivo */
 @media (max-width: 900px) {
   .bloco {
     flex-direction: column;
@@ -561,10 +530,10 @@ input:checked + .slider:before {
   .img-box {
     width: 90%;
     height: 220px;
-    transform: none; /* evita bug no mobile */
+    transform: none;
   }
   .img-box:hover {
-    transform: none; /* no mobile não faz sentido aumentar */
+    transform: none;
   }
 }
 .login-container {
@@ -662,7 +631,7 @@ input:focus {
 }
 
 .botao {
-  flex-direction: row; /* coloca na horizontal */
+  flex-direction: row;
   gap: 1px;
   padding: 2%;
 }
@@ -820,7 +789,7 @@ button:hover {
 }
 
 .dark-mode .des2:hover {
-  text-shadow: 0px 4px 12px rgba(197, 194, 194, 0.7); /* sombra só no texto */
+  text-shadow: 0px 4px 12px rgba(197, 194, 194, 0.7);
   scale: 1.05;
   cursor: pointer;
 }

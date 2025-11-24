@@ -25,7 +25,6 @@ const connectionStatus = document.getElementById("connectionStatus");
         return;
     }
 
-    // Buscar nome real do usuário na tabela profiles
     const { data: userData } = await supabase
         .from("profiles")
         .select("username")
@@ -55,7 +54,7 @@ async function loadMessages() {
 }
 
 // -------------------------
-// Adicionar mensagem no DOM
+// Adicionar mensagem 
 // -------------------------
 function addMessageToDOM(msg) {
     const div = document.createElement("div");
@@ -79,7 +78,7 @@ function addMessageToDOM(msg) {
 }
 
 // -------------------------
-// Realtime (sem duplicar)
+// Realtime 
 function setupRealtime() {
     if (realtimeChannel) {
         supabase.removeChannel(realtimeChannel);

@@ -5,16 +5,13 @@
   <meta viewport="width=device-width, initial-scale=1">
   <title>HistoryCar — Chat</title>
 
-  <!-- CSS PRINCIPAL -->
   <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
 
-  <!-- Barra -->
   <div class="barra"></div>
 
-  <!-- Botão de modo escuro -->
   <div class="dark-mode-toggle">
     <label class="switch">
       <input type="checkbox" id="darkToggle" />
@@ -22,7 +19,6 @@
     </label>
   </div>
 
-  <!-- Ícones de lupa e perfil -->
   <div class="cards-container">
     <div class="card lupa-card" title="Pesquisar">
       <a href="chat.html">
@@ -41,7 +37,6 @@
       <a href="home.html"><img src="/style/img/image-Photoroom.png" class="logo" alt="Logo HistoryCar" id="logoMain" /></a>
   </div>
 
-  <!-- Card do chat -->
   <div class="chat-card">
     
     <h2 class="des3">💬 Chat em Tempo Real</h2>
@@ -56,12 +51,10 @@
       <button type="submit" class="submit">Enviar</button>
     </form>
 
-    <!-- BOTÃO LIMPAR CHAT -->
     <button id="clearChat" class="clear-chat">Limpar Chat</button>
 
   </div>
 
-  <!-- Script do Dark Mode -->
   <script>
     const toggle = document.getElementById("darkToggle");
     const logoMain = document.getElementById("logoMain");
@@ -85,7 +78,6 @@
     });
   </script>
 
-  <!-- JS REAIS -->
   <script type="module" src="../js/auth.js" defer></script>
   <script type="module" src="../js/chat.js" defer></script>
 
