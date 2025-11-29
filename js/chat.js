@@ -69,7 +69,7 @@ function addMessageToDOM(msg) {
             <span class="message-time">
                 ${new Date(msg.created_at).toLocaleTimeString("pt-BR", { hour: '2-digit', minute: '2-digit' })}
             </span>
-        </div>
+        </div>  
         <div class="message-content">${msg.message}</div>
     `;
 

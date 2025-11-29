@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="/style/Img/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="/style/img/favicon.ico">
   <title>HistoryCar</title>
 
   <link rel="stylesheet" href="./css/style.css">
@@ -12,7 +12,12 @@
 <body>
   <div class="home-container">
 
-    <div class="barra"></div>
+    <div class="barra">
+      <div class="search-area" id="searchArea">
+        <input type="text" id="searchInput" placeholder="Pesquisar marcas...">
+        <button id="searchBtn">🔍</button>
+      </div>
+    </div>
 
     <div class="dark-mode-toggle">
       <label class="switch">
@@ -22,18 +27,28 @@
     </div>
 
     <div class="cards-container">
-      <div class="card lupa-card" title="Pesquisar">
-        <a href="chat.html">
-          <img src="/style/img/lupa.png" alt="Ícone de lupa" class="icon-lupa" id="lupaIcon" />
-        </a>
-      </div>
 
-      <div class="card perfil-card" title="Perfil">
-        <a href="login.html">
-          <img src="/style/img/OIP-removebg-preview (1).png" alt="Ícone de perfil" class="icon-perfil" />
-        </a>
-      </div>
-    </div>
+  <div class="card lupa-card" id="openSearch" title="Pesquisar">
+    <img src="/style/img/lupa.png" class="icon-lupa" id="lupaIcon">
+  </div>
+
+  <div class="card perfil-card" title="Perfil">
+    <a href="/components/login.html">
+      <img src="/style/img/OIP-removebg-preview (1).png" class="icon-perfil">
+    </a>
+  </div>
+
+  <div class="card nav-chat-card" title="Chat">
+     <a href="/components/chat.html">
+      <img src="/Style/img/chat.png" class="icon-chat">
+    </a>
+  </div>
+
+</div>
+
+
+
+
 
     <div class="jubileu">
       <img src="/style/img/image-Photoroom.png" class="logo" alt="Logo HistoryCar" id="logoMain" />
@@ -70,19 +85,19 @@
 
     <div class="Cbotao">
       <button class="botao">
-        <a href="chevrolet.html"><img src="/style/Img/logo chevrolet.png" alt=""></a>
+        <a href="/components/chevrolet.html"><img src="/style/Img/logo chevrolet.png" alt=""></a>
       </button>
 
       <button class="botao">
-        <a href="mit.html"><img src="/style/Img/logomitsu sla.png" alt=""></a>
+        <a href="/components/mit.html"><img src="/style/Img/logomitsu sla.png" alt=""></a>
       </button>
 
       <button class="botao">
-       <a href="audi.html"><img src="/style/Img/logo audi.png" alt=""></a> 
+       <a href="/components/audi.html"><img src="/style/Img/logo audi.png" alt=""></a> 
       </button>
 
       <button class="botao">
-      <a href="fiat.html"><img src="/style/Img/logofiat.png" alt=""></a> 
+      <a href="/components/fiat.html"><img src="/style/Img/logofiat.png" alt=""></a> 
       </button>
     </div>
   </div>
@@ -140,4 +155,5 @@
      <p class="direitos"> © 2025. Todos os direitos reservados aos criadores.</p>
   </div>
 </body>
+<script src="/js/search.js"></script>
 </html>

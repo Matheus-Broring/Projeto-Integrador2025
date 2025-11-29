@@ -33,6 +33,62 @@ body {
   z-index: 1000;
 }
 
+.search-area {
+  display: none;
+  position: absolute;
+  top: 5vh;
+  left: 0;
+  width: 100%;
+  height: 6vh;
+  background: #999;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  z-index: 1500;
+}
+
+.show-search {
+  display: flex !important;
+}
+
+#searchInput {
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 1rem;
+  background: #fff;
+  color: #222;
+}
+
+.dark-mode #searchInput {
+  background: #2a2a2a;
+  color: #eee;
+  border-color: #555;
+}
+
+#searchBtn {
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: #555;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#searchBtn:hover {
+  background: #333;
+}
+
+@media (max-width: 480px) {
+  #searchInput {
+    width: 140px;
+    padding: 8px 10px;
+  }
+  #searchBtn {
+    padding: 7px 10px;
+  }
+}
 .dark-mode-toggle {
   position: fixed;
   top: 1rem;
@@ -130,19 +186,16 @@ input:checked + .slider:before {
 
 .logoM {
   width: 35vw;
-  max-width: 40vw;
+  max-width: 420px;
   display: block;
   margin: 120px auto 40px;
-  height: 35vh;
-  max-height: 40vh;
+  height: auto;
 }
 
 .jubileu {
   display: flex;
-justify-content: center;
-align-items: center;
-max-width: 100%;
-max-height: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
 .des {
@@ -245,15 +298,15 @@ max-height: 100%;
 .chat-messages .message {
   margin: 10px 0;
   padding: 10px 12px;
-  border-radius: 10px;
+  border-radius: 10000px;
   background: var(--card-bg, #ffffff);
-  border-left: 4px solid #007bff;
+  border-left: 4px solid #940606;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
 .chat-messages .message.own-message {
   background: var(--own-msg-bg, #e6f4ff);
-  border-left-color: #28a745;
+  border-left-color: rgb(1, 153, 199);
   margin-left: 40px;
 }
 
@@ -323,9 +376,9 @@ max-height: 100%;
   max-height: 400px;
   overflow-y: auto;
   padding: 12px;
-  background: #fafafa;
+  background: rgb(255, 255, 255);
   border-radius: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid #ffffff;
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -495,15 +548,15 @@ max-height: 100%;
 }
 
 .img1 {
-  background: #c94b4b;
+  background: transparent;
 }
 
 .img2 {
-  background: #0096c7;
+  background: transparent;
 }
 
 .img3 {
-  background: #5a189a;
+  background: transparent;
 }
 
 .bloco {
@@ -559,7 +612,7 @@ max-height: 100%;
 }
 
 img {
-  max-width: 1000%;
+  max-width: 100%;
   max-height: 100%;
 }
 
@@ -848,4 +901,28 @@ button:hover {
 
 .direitos {
   color: white;
+}
+
+.nav-chat-card {
+  background-color: #999;
+  border-radius: 0 0 15px 15px;
+  height: 10vh;
+  width: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.nav-chat-card:hover {
+  background-color: #777;
+}
+
+.nav-chat-card img {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
 }
